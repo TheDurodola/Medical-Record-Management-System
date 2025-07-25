@@ -4,13 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cb0bca1-6bf5-48da-9423-5255c6849b17" name="Changes" comment="" />
+    <list default="true" id="9cb0bca1-6bf5-48da-9423-5255c6849b17" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Medical-Record-Management-System.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codebase/src/administration.py" beforeDir="false" afterPath="$PROJECT_DIR$/codebase/src/administration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codebase/src/doctor_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/codebase/src/doctor_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codebase/src/patient_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/codebase/src/patient_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codebase/test/test_administration.py" beforeDir="false" afterPath="$PROJECT_DIR$/codebase/test/test_administration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codebase/test/test_doctordatabase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codebase/test/test_patientdatabase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/codebase/test/testadmin.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Python Unit Test" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -22,13 +48,21 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/TheDurodola/Medical-Record-Management-System.git&quot;,
-    &quot;accountId&quot;: &quot;a6822e57-9e4a-4d06-a932-01abd865762f&quot;
+    &quot;accountId&quot;: &quot;244f2c49-f562-4462-b93b-414ac8caf032&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/codebase/src/administration.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/codebase/src/doctor_database.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/codebase/src/patient_database.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="3081IX6JlPQwuPBdt1r0fPjtfcy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,9 +72,15 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in test_administration.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_doctor_database.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_patient_database.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in testadmin.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;bolaji-branch&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Desktop/GITHUB/Medical-Record-Management-System&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -95,21 +135,137 @@
       <workItem from="1753009961879" duration="904000" />
       <workItem from="1753038091068" duration="604000" />
       <workItem from="1753039227326" duration="306000" />
+      <workItem from="1753256459922" duration="28000" />
+      <workItem from="1753256529255" duration="43000" />
+      <workItem from="1753256637193" duration="1930000" />
+      <workItem from="1753274356853" duration="588000" />
+      <workItem from="1753286628987" duration="619000" />
+      <workItem from="1753289014411" duration="491000" />
+      <workItem from="1753303497721" duration="595000" />
+      <workItem from="1753338771780" duration="2602000" />
+      <workItem from="1753359901311" duration="2980000" />
+      <workItem from="1753370758170" duration="7993000" />
+      <workItem from="1753438551222" duration="16000" />
     </task>
+    <task id="LOCAL-00001" summary="Add unit tests for admin functionality">
+      <option name="closed" value="true" />
+      <created>1753257280291</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753257280291</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initialize project with __init__.py file">
+      <option name="closed" value="true" />
+      <created>1753257317823</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1753257317823</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Admin class with method to add doctor">
+      <option name="closed" value="true" />
+      <created>1753257917347</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753257917347</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add tests for adding doctors and patients in Admin class">
+      <option name="closed" value="true" />
+      <created>1753257954404</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753257954404</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add patient database functionality with record management methods">
+      <option name="closed" value="true" />
+      <created>1753359987913</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1753359987914</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add unit tests for patient database functionality">
+      <option name="closed" value="true" />
+      <created>1753362039399</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753362039399</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Refactor patient database to improve record management and add update functionality">
+      <option name="closed" value="true" />
+      <created>1753362057378</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1753362057378</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add methods to Admin class for adding doctors and checking database size">
+      <option name="closed" value="true" />
+      <created>1753363519844</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1753363519844</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add doctor database functionality with methods to check size and add records">
+      <option name="closed" value="true" />
+      <created>1753363532882</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1753363532882</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add unit test for Admin class to verify doctor addition functionality">
+      <option name="closed" value="true" />
+      <created>1753363543492</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1753363543492</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add unit test to verify initial size of doctor database">
+      <option name="closed" value="true" />
+      <created>1753363571448</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1753363571448</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Rename test_patient_database.py to test_patientdatabase.py for consistency">
+      <option name="closed" value="true" />
+      <created>1753363593185</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1753363593185</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add unit tests for admin functionality" />
+    <MESSAGE value="Initialize project with __init__.py file" />
+    <MESSAGE value="Add Admin class with method to add doctor" />
+    <MESSAGE value="Add tests for adding doctors and patients in Admin class" />
+    <MESSAGE value="Add patient database functionality with record management methods" />
+    <MESSAGE value="Add unit tests for patient database functionality" />
+    <MESSAGE value="Refactor patient database to improve record management and add update functionality" />
+    <MESSAGE value="Add methods to Admin class for adding doctors and checking database size" />
+    <MESSAGE value="Add doctor database functionality with methods to check size and add records" />
+    <MESSAGE value="Add unit test for Admin class to verify doctor addition functionality" />
+    <MESSAGE value="Add unit test to verify initial size of doctor database" />
+    <MESSAGE value="Rename test_patient_database.py to test_patientdatabase.py for consistency" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename test_patient_database.py to test_patientdatabase.py for consistency" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Medical_Record_Management_System$main.coverage" NAME="main Coverage Results" MODIFIED="1753360899072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Medical_Record_Management_System$.coverage" NAME=" Coverage Results" MODIFIED="1753389255151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/codebase/test" />
   </component>
 </project>
