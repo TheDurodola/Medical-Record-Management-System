@@ -22,7 +22,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/TheDurodola/Medical-Record-Management-System.git&quot;,
-    &quot;accountId&quot;: &quot;a6822e57-9e4a-4d06-a932-01abd865762f&quot;
+    &quot;accountId&quot;: &quot;f0a0dbeb-e1e4-47a2-85a9-ed3167521c84&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -95,6 +95,7 @@
       <workItem from="1753009961879" duration="904000" />
       <workItem from="1753038091068" duration="604000" />
       <workItem from="1753039227326" duration="306000" />
+      <workItem from="1753446786516" duration="47000" />
     </task>
     <servers />
   </component>
