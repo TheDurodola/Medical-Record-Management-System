@@ -44,3 +44,21 @@ class Admin:
             doctor_records[id_number].set_last_name(new_last_name)
         else:
             raise ValueError("Doctor ID not found")
+
+    def update_doctor_specialization(self, id_number, new_specialization):
+        if id_number in doctor_records:
+            doctor_records[id_number].set_specialization(new_specialization)
+        else:
+            raise ValueError("Doctor ID not found")
+
+    def update_doctor_phone_number(self, id_number, new_phone_number):
+        if id_number in doctor_records:
+            doctor_records[id_number].set_phone_number(new_phone_number)
+        else:
+            raise ValueError("Doctor ID not found")
+
+    def find_doctor_by_id(self, id_number):
+        if id_number in doctor_records:
+            return doctor_records[id_number]
+        else:
+            raise ValueError("Doctor ID not found")
