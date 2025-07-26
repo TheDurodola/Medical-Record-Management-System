@@ -32,16 +32,6 @@ class Admin:
 
     def clear_doctor_database(self):
         doctor_records.clear()
-    # def add_doctor(self, first_name, last_name, specialization, phone_number):
-    #     id_number = len(doctor_records) + 1
-    #     new_doctor = Doctor(id_number, first_name, last_name, specialization, phone_number)
-    #     doctor_records.update(id_number = new_doctor)
-    #
-    # def add_new_patient(self, first_name, last_name, date_of_birth, phone_number):
-    #     id_number = len(patient_records) + 1
-    #     new_patient = Patient(id_number, first_name, last_name, date_of_birth, phone_number)
-    #     patient_records.update(id_number = new_patient)
-
 
     def update_doctor_first_name(self, id_number, new_first_name):
         if id_number in doctor_records:
