@@ -3,7 +3,7 @@ import unittest
 
 class TestDoctor(unittest.TestCase):
     def test_validate_doctor_creation(self):
-        doctor = Doctor("DOC232", "jetbrain","Justine", "Babatunde", "Gynecologist", "09021885123")
+        doctor = Doctor("DOC232", "Justine", "Babatunde", "Gynecologist", "09021885123")
         self.assertEqual(doctor.get_doctor_id(), "DOC232")
         self.assertEqual(doctor.get_first_name(), "Justine")
         self.assertEqual(doctor.get_last_name(), "Babatunde")
@@ -12,24 +12,19 @@ class TestDoctor(unittest.TestCase):
 
     def test_invalid_first_name_with_a_character(self):
         with self.assertRaises(ValueError):
-            Doctor("DOC232", "jetbrain", "J/ustine", "Babatunde", "Gynecologist", "09021885123")
-
-    def test_invalid_password_with_an_empty_string(self):
-        with self.assertRaises(ValueError):
-            Doctor("DOC232", "jetbr","Justine", "Babatunde", "Gynecologist", "09021885123")
-
+            Doctor("DOC232", "J/ustine", "Babatunde", "Gynecologist", "09021885123")
 
     def test_invalid_last_name_with_a_space_in_between_the_name(self):
         with self.assertRaises(ValueError):
-            Doctor("DOC232", "jetbrain","Justine", "Baba tunde", "Gynecologist", "09021885123")
+            Doctor("DOC232", "Justine", "Baba tunde", "Gynecologist", "09021885123")
 
     def test_invalid_specialization_with_a_number(self):
         with self.assertRaises(ValueError):
-            Doctor("DOC232", "jetbrain","Justine", "Babatunde", "Gy45necologist", "09021885123")
+            Doctor("DOC232", "Justine", "Babatunde", "Gy45necologist", "09021885123")
 
     def test_invalid_phone_number_with_an_empty_string(self):
         with self.assertRaises(ValueError):
-            Doctor("DOC232", "jetbrain","Justine", "Babatunde", "Gynecologist", "")
+            Doctor("DOC232", "Justine", "Babatunde", "Gynecologist", "")
 
 if __name__ == '__main__':
     unittest.main()
