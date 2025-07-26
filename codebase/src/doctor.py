@@ -1,9 +1,9 @@
 class Doctor:
     def __init__(self, doctor_id, first_name, last_name, specialization, phone_number):
         self.__doctor_id = doctor_id
-        self.__first_name = first_name
-        self.__last_name = last_name
-        self.__specialization = specialization
+        self.__first_name = first_name.title()
+        self.__last_name = last_name.title()
+        self.__specialization = specialization.title()
         self.__phone_number = phone_number
 
     def get_doctor_id(self):
@@ -13,19 +13,19 @@ class Doctor:
         return self.__first_name
 
     def set_first_name(self, first_name):
-        self.__first_name = first_name
+        self.__first_name = first_name.title()
 
     def get_last_name(self):
         return self.__last_name
 
     def set_last_name(self, last_name):
-        self.__last_name = last_name
+        self.__last_name = last_name.title()
 
     def get_specialization(self):
         return self.__specialization
 
     def set_specialization(self, specialization):
-        self.__specialization = specialization
+        self.__specialization = specialization.title()
 
     def get_phone_number(self):
         return self.__phone_number
@@ -34,4 +34,4 @@ class Doctor:
         self.__phone_number = phone_number
 
     def get_doctor_info(self):
-        return f"Doctor ID: {self.__doctor_id}\nFull-name: Dr. {self.__first_name} {self.__last_name}\nSpecialization: {self.__specialization}\nPhone No{self.__phone_number}"
+        return f"Doctor ID: {self.__doctor_id}\nFull-name: Dr. {self.__first_name} {self.__last_name}\nSpecialization: {self.__specialization}\nPhone No: {self.__phone_number}"
