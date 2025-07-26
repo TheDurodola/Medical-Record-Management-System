@@ -1,7 +1,7 @@
 class Doctor:
     def __init__(self, doctor_id, first_name, last_name, specialization, phone_number):
-        self.validate_name(first_name)
-        self.validate_name(last_name)
+        first_name = self.validate_name(first_name)
+        last_name = self.validate_name(last_name)
         self.validate_name(specialization)
         self.validate_phone_number(phone_number)
         self.__doctor_id = doctor_id
@@ -50,6 +50,8 @@ class Doctor:
 
 
     def validate_name(self, name):
+        if name.startswith(' ') or name.endswith(' '):
+            name.trim()
         if name.isnumeric() or ' ' in name:
             raise ValueError('Invalid name! Name must contain only letters and no spaces.')
         if not name or not name.replace(' ', '').isalpha():
@@ -57,6 +59,8 @@ class Doctor:
         for char in name:
             if not char.isalpha() and char != ' ':
                 raise ValueError('Invalid name! Name must contain only letters and no special characters.')
+
+        return name
 
 
     def validate_phone_number(self, number):

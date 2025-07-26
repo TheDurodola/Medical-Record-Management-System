@@ -114,11 +114,19 @@ Phone No: 08148260470"""
         self.assertEqual("Oncology", doctor.get_specialization())
         self.assertEqual("08148260470", doctor.get_phone_number())
 
-
     def test_that_doctor_can_be_created_with_empty_string(self):
         self.admin.clear_doctor_database()
         with self.assertRaises(ValueError):
             self.admin.register_doctor("", "", "", "")
+
+    def test_that_doctor_cant_be_created_with_invalid_details(self):
+        self.admin.clear_doctor_database()
+        with self.assertRaises(ValueError):
+            self.admin.register_doctor("Oginni", "Fiyinfoluwa", "Onc0logy", "08148260470")
+        with self.assertRaises(ValueError):
+            self.admin.register_doctor("Oginni", "Fiyinfoluwa", "Oncology", "")
+        with self.assertRaises(ValueError):
+            self.admin.register_doctor("Oginni", "Fiyinfoluwa", "", "08148260470")
 
 
 
