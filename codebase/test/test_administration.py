@@ -24,7 +24,11 @@ class MyTestAdmin(unittest.TestCase):
         self.assertEqual(2, self.admin.check_patient_database_size())
         self.assertEqual({"PT1":2, "PT2":3}, self.admin.retrieve_all_patient_records())
 
-    def test_that_register_patient(self):
+    def test_that_a_new_doctor_doctor_can_be_registered(self):
+        self.admin.register_doctor("Oginni", "Fiyinfoluwa", "Oncology", "08148260470")
+        self.assertEqual(1, self.admin.check_doctor_database_size())
+
+
 
 if __name__ == '__main__':
     unittest.main()
