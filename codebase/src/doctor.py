@@ -43,7 +43,7 @@ class Doctor:
 
 
     def set_password(self, password):
-
+        validate_password(password)
         self.__password = password
 
     def get_first_name(self):
