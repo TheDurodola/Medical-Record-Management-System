@@ -27,7 +27,8 @@ class Admin:
         new_doctor = Doctor(id_number, firstname, lastname, specialization, phone_number)
         doctor_records[id_number] = new_doctor
 
-
+    def clear_doctor_database(self):
+        doctor_records.clear()
     # def add_doctor(self, first_name, last_name, specialization, phone_number):
     #     id_number = len(doctor_records) + 1
     #     new_doctor = Doctor(id_number, first_name, last_name, specialization, phone_number)
@@ -37,3 +38,7 @@ class Admin:
     #     id_number = len(patient_records) + 1
     #     new_patient = Patient(id_number, first_name, last_name, date_of_birth, phone_number)
     #     patient_records.update(id_number = new_patient)
+
+
+    def update_doctor_record(self, id_number, first_name, last_name, specialization, phone_number):
+        pass
