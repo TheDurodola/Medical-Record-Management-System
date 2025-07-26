@@ -2,7 +2,7 @@ from patient_database import patient_records
 from doctor_database import doctor_records
 
 from doctor import Doctor
-# from patient import Patient
+from patient import Patient
 
 class Admin:
 
@@ -18,10 +18,10 @@ class Admin:
     def retrieve_all_doctor_records(self):
         return doctor_records
 
-    def register_patient(self, new_patient):
+    def register_patient(self, title, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, phone_number):
         id_number = self.check_patient_database_size() + 1
         id_number = "PT" + str(id_number)
-        # new_patient = Patient(id_number, first_name, last_name, date_of_birth, phone_number)
+        new_patient = Patient(id_number, title, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, phone_number)
         patient_records[id_number] = new_patient
 
     def register_doctor(self, password, firstname, lastname, specialization, phone_number):

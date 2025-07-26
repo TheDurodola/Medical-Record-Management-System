@@ -24,6 +24,7 @@ class Patient:
         validate_phone_number(phone_number)
         validate_title(title)
         self.__gender = get_gender(title)
+        self.__title = title
         self.__patient_id = patient_id
         self.__first_name = first_name
         self.__last_name = last_name
@@ -31,6 +32,36 @@ class Patient:
         self.__age = datetime.date.today().year - self.__date_of_birth.year
         self.__phone_number = phone_number
         self.__medical_history = []
+
+
+    def get_patient_id(self):
+        return self.__patient_id
+
+    def get_first_name(self):
+        return self.__first_name
+
+    def get_last_name(self):
+        return self.__last_name
+
+    def get_dob(self):
+        return self.__date_of_birth
+
+    def set_first_name(self, first_name):
+        validate_name(first_name)
+        self.__first_name = first_name.title()
+
+    def set_last_name(self, last_name):
+        validate_name(last_name)
+        self.__last_name = last_name.title()
+
+
+    def set_phone_number(self, phone_number):
+        validate_phone_number(phone_number)
+        self.__phone_number = phone_number
+
+
+    def get_phone_number(self):
+        return self.__phone_number
 
 
 
@@ -44,4 +75,4 @@ class Patient:
 
 
     def __str__(self):
-        return f"Patient ID: {self.__patient_id}\nName: {self.__first_name} {self.__last_name}\nGender: {self.__gender}\nDate of Birth: {self.__date_of_birth}\nAge: {self.__age} years\nPhone No: {self.__phone_number}\nRecent Medical History: {self.__medical_history[3:] if self.__medical_history else 'No medical records available'}"
+        return f"Patient ID: {self.__patient_id}\nName: {self.__title} {self.__first_name} {self.__last_name}\nGender: {self.__gender}\nDate of Birth: {self.__date_of_birth}\nAge: {self.__age} years\nPhone No: {self.__phone_number}\nRecent Medical History: {self.__medical_history[3:] if self.__medical_history else 'No medical records available'}"
