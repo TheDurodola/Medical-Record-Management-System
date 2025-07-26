@@ -45,11 +45,28 @@ class MyTestAdmin(unittest.TestCase):
         self.assertEqual(2, self.admin.check_doctor_database_size())
 
 
-    def test_that_doctor_record_can_be_update(self):
+    def test_that_doctor_first_name_can_be_update(self):
         self.admin.clear_doctor_database()
         self.admin.register_doctor("Aginni", "Fiyinfoluwa", "Oncology", "08148260470")
-        self.admin.update_doctor_record("DR1", "Oginni", "Fiyinfoluwa", "Oncology", "08148260470")
-        # self.assertEqual("Oginni")
+        self.admin.update_doctor_first_name("DR1", "Oginni")
+        self.assertEqual("Oginni", self.admin.retrieve_all_doctor_records()["DR1"].get_first_name())
+
+    def test_that_doctor_first_name_update_fails_for_invalid_id(self):
+        self.admin.clear_doctor_database()
+        self.admin.register_doctor("Aginni", "Fiyinfoluwa", "Oncology", "08148260470")
+        with self.assertRaises(ValueError):
+            self.admin.update_doctor_first_name("DR999", "Oginni")
+
+
+    def test_that_doctor_last_name_can_be_update(self):
+        self.admin.clear_doctor_database()
+        self.admin.register_doctor("Oginni", "Feyifoluwa", "Oncology", "08148260470")
+        self.admin.update_doctor_last_name("DR1", "Fiyinfoluwa")
+        self.assertEqual("Fiyinfoluwa", self.admin.retrieve_all_doctor_records()["DR1"].get_last_name())
+
+
+
+
 
 
 
