@@ -12,18 +12,6 @@ class MyTestAdmin(unittest.TestCase):
         self.admin.clear_doctor_database()
         self.assertEqual(0, self.admin.check_doctor_database_size())
 
-    def test_thatPatientDatabaseIsInitiallyZero(self):
-        self.assertEqual(0, self.admin.check_patient_database_size())
-
-    def test_that_retrieve_patient_database(self):
-        self.assertEqual({}, self.admin.retrieve_all_patient_records())
-        self.admin.register_patient(2)
-        self.assertEqual(1, self.admin.check_patient_database_size())
-        self.assertEqual({"PT1":2}, self.admin.retrieve_all_patient_records())
-        self.admin.register_patient(3)
-        self.assertEqual(2, self.admin.check_patient_database_size())
-        self.assertEqual({"PT1":2, "PT2":3}, self.admin.retrieve_all_patient_records())
-
     def test_that_a_new_doctor_can_be_registered(self):
         self.admin.clear_doctor_database()
         self.admin.register_doctor("Victoria%","Oginni", "Fiyinfoluwa", "Oncology", "08148260470")
@@ -127,6 +115,18 @@ Phone No: 08148260470"""
             self.admin.register_doctor("Victoria$","Oginni", "Fiyinfoluwa", "Oncology", "")
         with self.assertRaises(ValueError):
             self.admin.register_doctor("Victoria$","Oginni", "Fiyinfoluwa", "", "08148260470")
+
+    def test_thatPatientDatabaseIsInitiallyZero(self):
+        self.assertEqual(0, self.admin.check_patient_database_size())
+
+    def test_that_retrieve_patient_database(self):
+        self.assertEqual({}, self.admin.retrieve_all_patient_records())
+        self.admin.register_patient("Mr.", "John", "Doe", 1990, 5, 15, "08123456789")
+        self.assertEqual(1, self.admin.check_patient_database_size())
+        self.admin.register_patient("Ms.", "Jane", "Smith", 1985, 3, 20, "08198765432")
+        self.assertEqual(2, self.admin.check_patient_database_size())
+        self.assertEqual("John", self.admin.retrieve_all_patient_records()["PT1"].get_first_name())
+
 
 
 
