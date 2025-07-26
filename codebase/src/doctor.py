@@ -1,10 +1,15 @@
 class Doctor:
     def __init__(self, doctor_id, first_name, last_name, specialization, phone_number):
+        self.set_doctor_id(doctor_id)
+        self.set_first_name(first_name)
+        self.set_last_name(last_name)
+        self.set_specialization(specialization)
+        self.set_phone_number(phone_number)
+
+    def set_doctor_id(self, doctor_id):
+        if not doctor_id.startswith('DOC') or not doctor_id[3:].isdigit():
+            raise ValueError('Invalid doctor ID! Doctor ID must start with DOC followed by numbers.')
         self.__doctor_id = doctor_id
-        self.__first_name = first_name
-        self.__last_name = last_name
-        self.__specialization = specialization
-        self.__phone_number = phone_number
 
     def get_doctor_id(self):
         return self.__doctor_id
@@ -13,25 +18,33 @@ class Doctor:
         return self.__first_name
 
     def set_first_name(self, first_name):
+        if not first_name.isalpha():
+            raise ValueError('Invalid first_name! First name must contain only letters.')
         self.__first_name = first_name
 
     def get_last_name(self):
         return self.__last_name
 
     def set_last_name(self, last_name):
+        if not last_name.isalpha():
+            raise ValueError('Invalid last_name! Last name must contain only letters.')
         self.__last_name = last_name
 
     def get_specialization(self):
         return self.__specialization
 
     def set_specialization(self, specialization):
+        if not specialization or not specialization.replace(' ', '').isalpha():
+            raise ValueError('Invalid specialization! Specialization must contain only letters and not empty.')
         self.__specialization = specialization
 
     def get_phone_number(self):
         return self.__phone_number
 
     def set_phone_number(self, phone_number):
+        if not phone_number.isdigit() or not phone_number.replace(' ', '').isdigit() or len(phone_number) != 11:
+            raise ValueError('Invalid phone number! Phone number must contain only digits, must be eleven digits and not empty.')
         self.__phone_number = phone_number
 
     def get_doctor_info(self):
-        return f"Doctor ID: {self.__doctor_id}\nFull-name: Dr. {self.__first_name} {self.__last_name}\nSpecialization: {self.__specialization}\nPhone No{self.__phone_number}"
+        return f"Doctor ID: {self.__doctor_id}\nFull-name: Dr. {self.__first_name} {self.__last_name}\nSpecialization: {self.__specialization}\nPhone No: {self.__phone_number}"
