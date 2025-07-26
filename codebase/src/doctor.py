@@ -1,3 +1,8 @@
+from patient_database import patient_records
+from patient import Patient
+
+
+
 def validate_name(name):
     if name.startswith(' ') or name.endswith(' '):
         name.trim()
@@ -37,6 +42,9 @@ class Doctor:
         self.__last_name = last_name.title()
         self.__specialization = specialization.title()
         self.__phone_number = phone_number
+
+    def retrieve_all_patient_records(self):
+        return patient_records
 
     def get_doctor_id(self):
         return self.__doctor_id
