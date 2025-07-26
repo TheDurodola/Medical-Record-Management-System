@@ -1,6 +1,7 @@
 class Doctor:
-    def __init__(self, doctor_id, first_name, last_name, specialization, phone_number):
+    def __init__(self, doctor_id, password, first_name, last_name, specialization, phone_number):
         self.set_doctor_id(doctor_id)
+        self.set_password(password)
         self.set_first_name(first_name)
         self.set_last_name(last_name)
         self.set_specialization(specialization)
@@ -13,6 +14,11 @@ class Doctor:
 
     def get_doctor_id(self):
         return self.__doctor_id
+
+    def set_password(self, password):
+        if len(password) < 8:
+            raise ValueError('Password must be at least 8 characters long.')
+        self.__password = password
 
     def get_first_name(self):
         return self.__first_name
