@@ -115,6 +115,11 @@ Phone No: 08148260470"""
         self.assertEqual("08148260470", doctor.get_phone_number())
 
 
+    def test_that_doctor_can_be_created_with_empty_string(self):
+        self.admin.clear_doctor_database()
+        with self.assertRaises(ValueError):
+            self.admin.register_doctor("", "", "", "")
+
 
 
 
