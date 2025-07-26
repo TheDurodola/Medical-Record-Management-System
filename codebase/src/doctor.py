@@ -7,8 +7,8 @@ class Doctor:
         self.set_phone_number(phone_number)
 
     def set_doctor_id(self, doctor_id):
-        if not doctor_id.startswith('DOC') or not doctor_id[3:].isdigit():
-            raise ValueError('Invalid doctor ID! Doctor ID must start with DOC followed by numbers.')
+        if not doctor_id.startswith('DR') or not doctor_id[2:].isdigit():
+            raise ValueError('Invalid doctor ID! Doctor ID must start with DR followed by numbers.')
         self.__doctor_id = doctor_id
 
     def get_doctor_id(self):
