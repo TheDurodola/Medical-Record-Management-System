@@ -32,16 +32,6 @@ class Admin:
 
     def clear_doctor_database(self):
         doctor_records.clear()
-    # def add_doctor(self, first_name, last_name, specialization, phone_number):
-    #     id_number = len(doctor_records) + 1
-    #     new_doctor = Doctor(id_number, first_name, last_name, specialization, phone_number)
-    #     doctor_records.update(id_number = new_doctor)
-    #
-    # def add_new_patient(self, first_name, last_name, date_of_birth, phone_number):
-    #     id_number = len(patient_records) + 1
-    #     new_patient = Patient(id_number, first_name, last_name, date_of_birth, phone_number)
-    #     patient_records.update(id_number = new_patient)
-
 
     def update_doctor_first_name(self, id_number, new_first_name):
         if id_number in doctor_records:
@@ -52,5 +42,23 @@ class Admin:
     def update_doctor_last_name(self, id_number, new_last_name):
         if id_number in doctor_records:
             doctor_records[id_number].set_last_name(new_last_name)
+        else:
+            raise ValueError("Doctor ID not found")
+
+    def update_doctor_specialization(self, id_number, new_specialization):
+        if id_number in doctor_records:
+            doctor_records[id_number].set_specialization(new_specialization)
+        else:
+            raise ValueError("Doctor ID not found")
+
+    def update_doctor_phone_number(self, id_number, new_phone_number):
+        if id_number in doctor_records:
+            doctor_records[id_number].set_phone_number(new_phone_number)
+        else:
+            raise ValueError("Doctor ID not found")
+
+    def find_doctor_by_id(self, id_number):
+        if id_number in doctor_records:
+            return doctor_records[id_number]
         else:
             raise ValueError("Doctor ID not found")

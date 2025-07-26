@@ -1,4 +1,4 @@
-from codebase.src.doctor import Doctor
+from doctor import Doctor
 import unittest
 
 class TestDoctor(unittest.TestCase):
