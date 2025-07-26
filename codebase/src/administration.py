@@ -1,7 +1,7 @@
 from patient_database import patient_records
 from doctor_database import doctor_records
 
-# from doctor import Doctor
+from doctor import Doctor
 # from patient import Patient
 
 class Admin:
@@ -21,10 +21,10 @@ class Admin:
         # new_patient = Patient(id_number, first_name, last_name, date_of_birth, phone_number)
         patient_records[id_number] = new_patient
 
-    def register_doctor(self, new_doctor):
+    def register_doctor(self, firstname, lastname, specialization, phone_number):
         id_number = self.check_doctor_database_size() + 1
         id_number = "DR" + str(id_number)
-        # new_doctor = Doctor(id_number, first_name, last_name, specialization, phone_number)
+        new_doctor = Doctor(id_number, firstname, lastname, specialization, phone_number)
         doctor_records[id_number] = new_doctor
 
 
