@@ -1,8 +1,30 @@
+from codebase.src.doctor import Doctor
 import unittest
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
+class TestDoctor(unittest.TestCase):
+    def test_validate_doctor_creation(self):
+        doctor = Doctor("DR232", "Justine", "Babatunde", "Gynecologist", "09021885123")
+        self.assertEqual(doctor.get_doctor_id(), "DR232")
+        self.assertEqual(doctor.get_first_name(), "Justine")
+        self.assertEqual(doctor.get_last_name(), "Babatunde")
+        self.assertEqual(doctor.get_specialization(), "Gynecologist")
+        self.assertEqual(doctor.get_phone_number(), "09021885123")
+
+    def test_invalid_first_name_with_a_character(self):
+        with self.assertRaises(ValueError):
+            Doctor("DR232", "J/ustine", "Babatunde", "Gynecologist", "09021885123")
+
+    def test_invalid_last_name_with_a_space_in_between_the_name(self):
+        with self.assertRaises(ValueError):
+            Doctor("DR232", "Justine", "Baba tunde", "Gynecologist", "09021885123")
+
+    def test_invalid_specialization_with_a_number(self):
+        with self.assertRaises(ValueError):
+            Doctor("DR232", "Justine", "Babatunde", "Gy45necologist", "09021885123")
+
+    def test_invalid_phone_number_with_an_empty_string(self):
+        with self.assertRaises(ValueError):
+            Doctor("DR232", "Justine", "Babatunde", "Gynecologist", "")
 
 if __name__ == '__main__':
     unittest.main()
