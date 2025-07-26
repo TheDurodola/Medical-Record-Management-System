@@ -1,16 +1,6 @@
 class Doctor:
     def __init__(self, doctor_id, first_name, last_name, specialization, phone_number):
-        self.set_doctor_id(doctor_id)
-        self.__first_name = first_name.title()
-        self.__last_name = last_name.title()
-        self.__specialization = specialization.title()
-        self.__phone_number = phone_number)
-
-    def set_doctor_id(self, doctor_id):
-        if not doctor_id.startswith('DR') or not doctor_id[2:].isdigit():
-            raise ValueError('Invalid doctor ID! Doctor ID must start with DR followed by numbers.')
         self.__doctor_id = doctor_id
-
         self.__first_name = first_name.title()
         self.__last_name = last_name.title()
         self.__specialization = specialization.title()
@@ -35,7 +25,7 @@ class Doctor:
     def set_last_name(self, last_name):
         if not last_name.isalpha():
             raise ValueError('Invalid last_name! Last name must contain only letters.')
-         self.__last_name = last_name.title()
+        self.__last_name = last_name.title()
 
 
     def get_specialization(self):
