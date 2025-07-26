@@ -24,10 +24,10 @@ class Admin:
         # new_patient = Patient(id_number, first_name, last_name, date_of_birth, phone_number)
         patient_records[id_number] = new_patient
 
-    def register_doctor(self, firstname, lastname, specialization, phone_number):
+    def register_doctor(self, password, firstname, lastname, specialization, phone_number):
         id_number = self.check_doctor_database_size() + 1
         id_number = "DR" + str(id_number)
-        new_doctor = Doctor(id_number, firstname, lastname, specialization, phone_number)
+        new_doctor = Doctor(id_number, password,firstname, lastname, specialization, phone_number)
         doctor_records[id_number] = new_doctor
 
     def clear_doctor_database(self):

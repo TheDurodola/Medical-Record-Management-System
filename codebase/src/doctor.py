@@ -19,14 +19,19 @@ def validate_phone_number(number):
         raise ValueError('Phone number cannot be empty!')
 
 
+def validate_password(password):
+    if len(password) < 8:
+        raise ValueError('Password must be at least 8 characters long.')
+
+
+
 class Doctor:
-     def __init__(self, doctor_id, password, first_name, last_name, specialization, phone_number):
+    def __init__(self, doctor_id, password, first_name, last_name, specialization, phone_number):
         first_name = validate_name(first_name)
         last_name = validate_name(last_name)
         validate_name(specialization)
         validate_phone_number(phone_number)
-        self.set_password(password)
-
+        validate_password(password)
         self.__doctor_id = doctor_id
         self.__first_name = first_name.title()
         self.__last_name = last_name.title()
@@ -38,8 +43,7 @@ class Doctor:
 
 
     def set_password(self, password):
-        if len(password) < 8:
-            raise ValueError('Password must be at least 8 characters long.')
+
         self.__password = password
 
     def get_first_name(self):
