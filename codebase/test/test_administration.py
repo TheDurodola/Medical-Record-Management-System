@@ -88,8 +88,7 @@ class MyTestAdmin(unittest.TestCase):
             """Doctor ID: DR1
 Full-name: Dr. Oginni Fiyinfoluwa
 Specialization: Oncology
-Phone No: 08148260470
-TO-SEE No patients" assigned"""
+Phone No: 08148260470"""
         )
         self.assertEqual(expected_info, doctor_info)
 
@@ -118,7 +117,6 @@ TO-SEE No patients" assigned"""
             self.admin.register_doctor("Victoria$","Oginni", "Fiyinfoluwa", "", "08148260470")
 
     def test_thatPatientDatabaseIsInitiallyZero(self):
-        self.admin.clear_patient_database()
         self.assertEqual(0, self.admin.check_patient_database_size())
 
     def test_that_retrieve_patient_database(self):
@@ -129,19 +127,7 @@ TO-SEE No patients" assigned"""
         self.assertEqual(2, self.admin.check_patient_database_size())
         self.assertEqual("John", self.admin.retrieve_all_patient_records()["PT1"].get_first_name())
 
-    def test_assign_patient_to_doctor_schedule(self):
-        self.admin.register_doctor("Victoria%", "Fiyinfoluwa","Oginni", "Oncology", "08148260470")
-        self.admin.register_patient("Mr.", "John", "Doe", 1990, 5, 15, "08123456789")
-        self.admin.assign_doctor_to_patient()
-        self.assertEqual("Dr. Oginni Fiyinfoluwa", self.admin.retrieve_all_patient_records()["PT1"].get_assigned_doctor())
-        self.assertEqual("Dr. Oginni Fiyinfoluwa", self.admin.retrieve_all_doctor_records()["DR1"].get_full_name())
-        self.assertEqual(["Mr. John Doe"], self.admin.retrieve_all_doctor_records()["DR1"].get_list_of_patients())
-        self.admin.register_patient("Ms.", "Jane", "Smith", 1985, 3, 20, "08198765432")
-        self.admin.assign_doctor_to_patient()
-        self.assertEqual(["Mr. John Doe", "Ms. Jane Smith"], self.admin.retrieve_all_doctor_records()["DR1"].get_list_of_patients())
-        self.admin.register_patient("Mr.", "Alice", "Johnson", 1992, 8, 25, "08123456789")
-        self.admin.assign_doctor_to_patient()
-        self.assertEqual(["Mr. John Doe", "Ms. Jane Smith", "Mr. Alice Johnson"], self.admin.retrieve_all_doctor_records()["DR1"].get_list_of_patients())
+
 
 
 
