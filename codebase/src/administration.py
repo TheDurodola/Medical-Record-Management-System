@@ -62,3 +62,4 @@ class Admin:
             return doctor_records[id_number]
         else:
             raise ValueError("Doctor ID not found")
+

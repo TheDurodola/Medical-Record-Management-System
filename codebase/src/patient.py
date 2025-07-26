@@ -50,7 +50,6 @@ class Patient:
         self.__date_of_birth = datetime.date(year_of_birth, month_of_birth, day_of_birth)
         self.__age = datetime.date.today().year - self.__date_of_birth.year
         self.__phone_number = phone_number
-        self.__doctor_assigned = None
         self.__medical_history = []
 
 
@@ -82,15 +81,6 @@ class Patient:
 
     def get_phone_number(self):
         return self.__phone_number
-
-    def set_doctor_assigned(self, doctor_assigned):
-        if doctor_assigned is None:
-            self.__doctor_assigned = None
-        else:
-            self.__doctor_assigned = "Dr. " + doctor_assigned
-
-    def get_assigned_doctor(self):
-        return self.__doctor_assigned
 
 
 
