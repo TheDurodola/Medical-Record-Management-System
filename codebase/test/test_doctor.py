@@ -2,6 +2,10 @@ from doctor import Doctor
 import unittest
 
 class TestDoctor(unittest.TestCase):
+
+    def setUp(self):
+        self.doctor = Doctor("DR1", "GoldenDragon1", "Durodola", "Abolaji", "Surgery", "08148260470")
+
     def test_validate_doctor_creation(self):
         doctor = Doctor("DR232", "jayjus23", "Justine", "Babatunde", "Gynecologist", "09021885123")
         self.assertEqual(doctor.get_doctor_id(), "DR232")
@@ -29,6 +33,10 @@ class TestDoctor(unittest.TestCase):
     def test_invalid_phone_number_with_an_empty_string(self):
         with self.assertRaises(ValueError):
             Doctor("DR232", "jayjus23","Justine", "Babatunde", "Gynecologist", "")
+
+
+    def test_that_patient_database_is_already_filled_by_the_administrator(self):
+        self.assertEqual(0,len(self.doctor.retrieve_all_patient_records()))
 
 if __name__ == '__main__':
     unittest.main()

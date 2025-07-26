@@ -1,6 +1,6 @@
 import datetime
 
-from doctor import validate_phone_number, validate_name
+
 
 
 def validate_title(title):
@@ -16,6 +16,25 @@ def get_gender(title):
     else:
         return "Unknown"
 
+def validate_name(name):
+    if name.startswith(' ') or name.endswith(' '):
+        name.trim()
+    if name.isnumeric() or ' ' in name:
+        raise ValueError('Invalid name! Name must contain only letters and no spaces.')
+    if not name or not name.replace(' ', '').isalpha():
+        raise ValueError('Invalid name! Name must contain only letters and not empty.')
+    for char in name:
+        if not char.isalpha() and char != ' ':
+            raise ValueError('Invalid name! Name must contain only letters and no special characters.')
+
+    return name
+
+
+def validate_phone_number(number):
+    if not number.isdigit() or len(number) != 11:
+        raise ValueError('Invalid phone number! Phone number must contain only digits and be eleven digits long.')
+    if not number:
+        raise ValueError('Phone number cannot be empty!')
 
 class Patient:
     def __init__(self, patient_id, title, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, phone_number):
