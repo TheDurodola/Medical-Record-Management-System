@@ -29,6 +29,7 @@ while loop_condition:
 7) Find doctor by ID
 8) Find patient by ID
 9) Print Schedule Report
+
 0) Logout to main menu
 """)
                 choice = input("Enter your choice: ")
@@ -165,7 +166,62 @@ while loop_condition:
                 print("No doctors registered yet.")
 
             else:
-                print("Doctor login is not yet implemented.")
+                doctor_id = input("Enter doctor's ID number: ").upper()
+                password = input("Enter doctor's password: ")
+
+                if admin.authenticate_doctor(doctor_id, password):
+                    print(f"You are now logged in as a {admin.find_doctor_by_id(doctor_id).get_full_name()}")
+
+                    inner_loop = True
+                    while inner_loop:
+                        print("""
+1) View your information
+2) Check your schedule
+3) Find patient by ID
+
+                        
+0) Logout to main menu""")
+
+                        choice = input("Enter your choice: ")
+                        match choice:
+                            case "1":
+                                doctor = admin.find_doctor_by_id(doctor_id)
+                                print(doctor.get_doctor_info())
+
+                            case "2":
+                                doctor = admin.find_doctor_by_id(doctor_id)
+                                if doctor.get_list_of_patients():
+                                    print(f"Patients assigned to {doctor.get_full_name()}:")
+                                    for patient in doctor.get_list_of_patients():
+                                        print(f"- {patient}")
+                                else:
+                                    print("No patients assigned.")
+
+                            case "3":
+                                id_number = input("Enter patient's ID number to find: ").upper()
+
+                                try:
+                                    patient = admin.find_patient_by_id(id_number)
+                                    print(patient.__str__())
+
+                                    navigator = input("Do you want to update this patient's medical record? (yes/no): ").lower()
+                                    if navigator == "yes":
+                                        diagnosis = input("Enter diagnosis: ")
+                                        treatment = input("Enter treatment: ")
+                                        admin.find_patient_by_id(id_number).add_medical_record(f"Diagnosis: {diagnosis}, Treatment: {treatment}")
+                                    else:
+                                        print("No changes made to the patient's record.")
+
+                                except ValueError as e:
+                                    print(f"Error finding patient: {e}")
+
+                            case "0":
+                                print("Logging out to main menu.")
+                                inner_loop = False
+
+                            case _:
+                                print("Invalid choice. Please try again.")
+
 
 
         case "0":

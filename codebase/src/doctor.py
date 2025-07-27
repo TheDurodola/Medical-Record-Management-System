@@ -37,6 +37,7 @@ class Doctor:
         self.__last_name = last_name.title()
         self.__specialization = specialization.title()
         self.__phone_number = phone_number
+        self.__password = password
         self.__list_of_patients = []
 
     def get_doctor_id(self):
@@ -46,6 +47,9 @@ class Doctor:
     def set_password(self, password):
         validate_password(password)
         self.__password = password
+
+    def get_password(self):
+        return self.__password
 
     def get_first_name(self):
         return self.__first_name

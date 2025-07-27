@@ -39,31 +39,31 @@ class Admin:
         doctor_records.clear()
 
     def update_doctor_first_name(self, id_number, new_first_name):
-        if id_number in doctor_records:
+        if id_number.upper() in doctor_records:
             doctor_records[id_number].set_first_name(new_first_name)
         else:
             raise ValueError("Doctor ID not found")
 
     def update_doctor_last_name(self, id_number, new_last_name):
-        if id_number in doctor_records:
+        if id_number.upper() in doctor_records:
             doctor_records[id_number].set_last_name(new_last_name)
         else:
             raise ValueError("Doctor ID not found")
 
     def update_doctor_specialization(self, id_number, new_specialization):
-        if id_number in doctor_records:
+        if id_number.upper() in doctor_records:
             doctor_records[id_number].set_specialization(new_specialization)
         else:
             raise ValueError("Doctor ID not found")
 
     def update_doctor_phone_number(self, id_number, new_phone_number):
-        if id_number in doctor_records:
+        if id_number.upper() in doctor_records:
             doctor_records[id_number].set_phone_number(new_phone_number)
         else:
             raise ValueError("Doctor ID not found")
 
     def find_doctor_by_id(self, id_number):
-        if id_number in doctor_records:
+        if id_number.upper() in doctor_records:
             return doctor_records[id_number]
         else:
             raise ValueError("Doctor ID not found")
@@ -83,25 +83,25 @@ class Admin:
         patient_records.clear()
 
     def update_patient_last_name(self, id_number, new_value):
-        if id_number in patient_records:
+        if id_number.upper() in patient_records:
             patient_records[id_number].set_last_name(new_value)
         else:
             raise ValueError("Patient ID not found")
 
     def update_patient_first_name(self, id_number, new_value):
-        if id_number in patient_records:
+        if id_number.upper() in patient_records:
             patient_records[id_number].set_first_name(new_value)
         else:
             raise ValueError("Patient ID not found")
 
     def update_patient_phone_number(self, id_number, new_value):
-        if id_number in patient_records:
+        if id_number.upper() in patient_records:
             patient_records[id_number].set_phone_number(new_value)
         else:
             raise ValueError("Patient ID not found")
 
     def find_patient_by_id(self, id_number):
-        if id_number in patient_records:
+        if id_number.upper() in patient_records:
             return patient_records[id_number]
         else:
             raise ValueError("Patient ID not found")
@@ -117,3 +117,13 @@ class Admin:
             else:
                 report += "No patients assigned.\n"
         return report
+
+    def authenticate_doctor(self, doctor_id, password):
+        if doctor_id.upper() in doctor_records:
+            doctor = doctor_records[doctor_id.upper()]
+            if doctor.get_password() == password:
+                return True
+            else:
+                raise ValueError("Incorrect password")
+        else:
+            raise ValueError("Doctor ID not found")

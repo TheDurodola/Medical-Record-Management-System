@@ -85,4 +85,4 @@ class Patient:
 
 
     def __str__(self):
-        return f"TO-SEE: {self.__doctor_assigned}\nPatient ID: {self.__patient_id}\nName: {self.__title} {self.__first_name} {self.__last_name}\nGender: {self.__gender}\nDate of Birth: {self.__date_of_birth}\nAge: {self.__age} years\nPhone No: {self.__phone_number}\nRecent Medical History: {self.__medical_history[3:] if self.__medical_history else 'No medical records available'}"
+        return f"TO-SEE: {self.__doctor_assigned}\nPatient ID: {self.__patient_id}\nName: {self.__title} {self.__first_name} {self.__last_name}\nGender: {self.__gender}\nDate of Birth: {self.__date_of_birth}\nAge: {self.__age} years\nPhone No: {self.__phone_number}\nRecent Medical History: {self.__medical_history[:3] if self.__medical_history else 'No medical records available'}"
