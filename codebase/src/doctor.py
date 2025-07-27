@@ -37,6 +37,7 @@ class Doctor:
         self.__last_name = last_name.title()
         self.__specialization = specialization.title()
         self.__phone_number = phone_number
+        self.__list_of_patients = []
 
     def get_doctor_id(self):
         return self.__doctor_id
@@ -64,10 +65,20 @@ class Doctor:
     def get_specialization(self):
         return self.__specialization
 
+    def get_full_name(self):
+        return f"Dr. {self.__last_name} {self.__first_name}"
 
     def set_specialization(self, specialization):
         validate_name(specialization)
         self.__specialization = specialization.title()
+
+
+    def set_list_of_patients(self, patient):
+        self.__list_of_patients= patient
+
+
+    def get_list_of_patients(self):
+        return self.__list_of_patients
 
 
     def get_phone_number(self):
@@ -78,5 +89,5 @@ class Doctor:
         self.__phone_number = phone_number
 
     def get_doctor_info(self):
-        return f"Doctor ID: {self.__doctor_id}\nFull-name: Dr. {self.__first_name} {self.__last_name}\nSpecialization: {self.__specialization}\nPhone No: {self.__phone_number}"
+        return f"Doctor ID: {self.__doctor_id}\nFull-name: Dr. {self.__first_name} {self.__last_name}\nSpecialization: {self.__specialization}\nPhone No: {self.__phone_number}\nTO-SEE {', '.join(self.__list_of_patients) if self.__list_of_patients else 'No patients" assigned'}"
 

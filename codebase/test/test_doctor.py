@@ -2,6 +2,7 @@ from doctor import Doctor
 import unittest
 
 class TestDoctor(unittest.TestCase):
+
     def test_validate_doctor_creation(self):
         doctor = Doctor("DR232", "jayjus23", "Justine", "Babatunde", "Gynecologist", "09021885123")
         self.assertEqual(doctor.get_doctor_id(), "DR232")
