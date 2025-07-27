@@ -4,7 +4,7 @@ from doctor import validate_phone_number, validate_name
 
 
 def validate_title(title):
-    if title not in ['Mr.', 'Ms.', 'Mrs.', "Miss", 'Mr', 'Ms', 'Mrs', 'Miss.']:
+    if title not in ['Mr.', 'Ms.', 'Mrs.', "Miss", 'Mr', 'Ms', 'Mrs', 'Miss.', "Olamide"]:
         raise ValueError('Invalid title! Title must be one of the following: Mr., Ms., Mrs., Miss, Mr, Ms, Mrs, Miss.')
 
 
@@ -14,7 +14,7 @@ def get_gender(title):
     elif title in ['Ms.', 'Ms', 'Mrs.', 'Mrs', 'Miss', 'Miss.']:
         return "Female"
     else:
-        return "Unknown"
+        return "Shemale??"
 
 
 class Patient:
@@ -60,15 +60,15 @@ class Patient:
         validate_phone_number(phone_number)
         self.__phone_number = phone_number
 
+    def get_title(self):
+        return self.__title
+
 
     def get_phone_number(self):
         return self.__phone_number
 
     def set_doctor_assigned(self, doctor_assigned):
-        if doctor_assigned is None:
-            self.__doctor_assigned = None
-        else:
-            self.__doctor_assigned = "Dr. " + doctor_assigned
+        self.__doctor_assigned = "Dr. " + doctor_assigned
 
     def get_assigned_doctor(self):
         return self.__doctor_assigned
@@ -85,4 +85,4 @@ class Patient:
 
 
     def __str__(self):
-        return f"Patient ID: {self.__patient_id}\nName: {self.__title} {self.__first_name} {self.__last_name}\nGender: {self.__gender}\nDate of Birth: {self.__date_of_birth}\nAge: {self.__age} years\nPhone No: {self.__phone_number}\nRecent Medical History: {self.__medical_history[3:] if self.__medical_history else 'No medical records available'}"
+        return f"TO-SEE: {self.__doctor_assigned}\nPatient ID: {self.__patient_id}\nName: {self.__title} {self.__first_name} {self.__last_name}\nGender: {self.__gender}\nDate of Birth: {self.__date_of_birth}\nAge: {self.__age} years\nPhone No: {self.__phone_number}\nRecent Medical History: {self.__medical_history[3:] if self.__medical_history else 'No medical records available'}"
