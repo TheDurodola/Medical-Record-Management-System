@@ -88,7 +88,8 @@ class MyTestAdmin(unittest.TestCase):
             """Doctor ID: DR1
 Full-name: Dr. Oginni Fiyinfoluwa
 Specialization: Oncology
-Phone No: 08148260470"""
+Phone No: 08148260470
+TO-SEE No patients" assigned"""
         )
         self.assertEqual(expected_info, doctor_info)
 
