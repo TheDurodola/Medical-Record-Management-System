@@ -13,10 +13,17 @@ while loop_condition:
     print(main_menu)
     navigate = input("Enter your choice: ")
 
+
     match navigate:
         case "1":
-            print("You are now logged in as an Administrator")
-
+            print("You are now logging in as an Administrator")
+            admin_id = input("Enter Administrator ID: ")
+            admin_password = input("Enter Administrator password: ")
+            if admin_id and admin_password == "<PASSWORD>":
+                print("Login successful.")
+            else:
+                print("Invalid credentials. Please try again.")
+                continue
             inner_loop = True
             while inner_loop:
                 print("""
@@ -63,7 +70,7 @@ while loop_condition:
                         specialization = input("Enter doctor's specialization: ")
                         phone_number = input("Enter doctor's phone number: ")
                         try:
-                            admin.register_doctor(password, first_name, last_name, specialization, phone_number)
+                            print(admin.register_doctor(password, first_name, last_name, specialization, phone_number))
                             print("Doctor registered successfully.")
                         except ValueError as e:
                             print(f"Error registering doctor: {e}")
@@ -123,21 +130,21 @@ while loop_condition:
 
                     case "6":
                         id_number = input("Enter patient's ID number to update: ")
-                        field_to_update = input("Which field do you want to update (first_name/last_name/phone_number)? ").lower()
+                        field_to_update = input("Which field do you want to update (first name/last name/phone number)? ").lower().strip(' ') .strip('_')
 
-                        if field_to_update == "first_name":
+                        if field_to_update == "firstname":
                             new_value = input("Enter new first name: ")
                             admin.update_patient_first_name(id_number, new_value)
-                        elif field_to_update == "last_name":
+                        elif field_to_update == "lastname":
                             new_value = input("Enter new last name: ")
                             admin.update_patient_last_name(id_number, new_value)
-                        elif field_to_update == "phone_number":
+                        elif field_to_update == "phonenumber":
                             new_value = input("Enter new phone number: ")
                             admin.update_patient_phone_number(id_number, new_value)
                         print("Patient's information updated.")
 
                     case "7":
-                        id_number = input("Enter doctor's ID number to find: ")
+                        id_number = input("Enter doctor's ID number to find: ").upper()
                         try:
                             doctor = admin.find_doctor_by_id(id_number)
                             print(doctor.get_doctor_info())
@@ -146,7 +153,7 @@ while loop_condition:
                             print(f"Error finding doctor: {e}")
 
                     case "8":
-                        id_number = input("Enter patient's ID number to find: ")
+                        id_number = input("Enter patient's ID number to find: ").upper()
                         try:
                             patient = admin.find_patient_by_id(id_number)
                             print(patient.__str__())
