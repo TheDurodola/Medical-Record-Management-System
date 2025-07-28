@@ -38,9 +38,12 @@ while loop_condition:
                         title = input("Enter patient's title: ")
                         first_name = input("Enter patient's first name: ")
                         last_name = input("Enter patient's last name: ")
-                        year_of_birth = int(input("Enter year of birth: "))
-                        month_of_birth = int(input("Enter month of birth: "))
-                        day_of_birth = int(input("Enter day of birth: "))
+                        try:
+                            year_of_birth = int(input("Enter year of birth(yyyy): "))
+                            month_of_birth = int(input("Enter month of birth(mm): "))
+                            day_of_birth = int(input("Enter day of birth(dd): "))
+                        except ValueError:
+                            print("Please enter a number.")
                         phone_number = input("Enter phone number: ")
                         try:
                             print(admin.register_patient(title, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, phone_number))
@@ -72,7 +75,7 @@ while loop_condition:
                         if admin.check_patient_database_size() != 0:
                             patients = admin.retrieve_all_patient_records()
                             for patient in patients.values():
-                                print(patient+"\n")
+                                print(patient)
                         if admin.check_patient_database_size() == 0:
                             print("No patients registered yet.")
 

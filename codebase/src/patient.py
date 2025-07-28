@@ -3,9 +3,9 @@ import datetime
 from doctor import validate_phone_number, validate_name
 
 
-def validate_title(title):
-    if title not in ['Mr.', 'Ms.', 'Mrs.', "Miss", 'Mr', 'Ms', 'Mrs', 'Miss.', "Olamide"]:
-        raise ValueError('Invalid title! Title must be one of the following: Mr., Ms., Mrs., Miss, Mr, Ms, Mrs, Miss.')
+# def validate_title(title):
+#     if title not in ['Mr.', 'Ms.', 'Mrs.', "Miss", 'Mr', 'Ms', 'Mrs', 'Miss.', "Olamide", 'mr', 'miss', 'ms', 'ms.', 'mr.', "mister"]:
+#         raise ValueError('Invalid title! Title must be one of the following: Mr., Ms., Mrs., Miss, Mr, Ms, Mrs, Miss.')
 
 
 def get_gender(title):
@@ -13,8 +13,10 @@ def get_gender(title):
         return "Male"
     elif title in ['Ms.', 'Ms', 'Mrs.', 'Mrs', 'Miss', 'Miss.']:
         return "Female"
-    else:
+    elif title in ["Olamide"]:
         return "Shemale??"
+    else:
+        return "Other"
 
 
 class Patient:
@@ -22,7 +24,7 @@ class Patient:
         validate_name(first_name)
         validate_name(last_name)
         validate_phone_number(phone_number)
-        validate_title(title)
+        # validate_title(title)
         self.__gender = get_gender(title)
         self.__title = title
         self.__patient_id = patient_id
