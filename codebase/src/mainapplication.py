@@ -1,242 +1,173 @@
 from administration import Admin
-
-main_menu = """\t\t\tWelcome to Harvey Road General Hospital\t\t\t
-
-1) Login as Administrator
-2) Login as Doctor
-0) Exit the application"""
+import tkinter as tk
+from tkinter import messagebox
 
 admin = Admin()
-loop_condition = True
 
-while loop_condition:
-    print(main_menu)
-    navigate = input("Enter your choice: ")
-
-
-    match navigate:
-        case "1":
-            print("You are now logging in as an Administrator")
-            admin_id = input("Enter Administrator ID: ")
-            admin_password = input("Enter Administrator password: ")
-            if admin_id and admin_password == "<PASSWORD>":
-                print("Login successful.")
-            else:
-                print("Invalid credentials. Please try again.")
-                continue
-            inner_loop = True
-            while inner_loop:
-                print("""
-1) Register a new patient
-2) Register a new doctor 
-3) View all patients
-4) View all doctors
-5) Update doctor information
-6) Update patient information
-7) Find doctor by ID
-8) Find patient by ID
-9) Print Schedule Report
-
-0) Logout to main menu
-""")
-                choice = input("Enter your choice: ")
-                match choice:
-                    case "1":
-                        title = input("Enter patient's title: ")
-                        first_name = input("Enter patient's first name: ")
-                        last_name = input("Enter patient's last name: ")
-                        try:
-                            year_of_birth = int(input("Enter year of birth(yyyy): "))
-                            month_of_birth = int(input("Enter month of birth(mm): "))
-                            day_of_birth = int(input("Enter day of birth(dd): "))
-                        except ValueError:
-                            print("Please enter a number.")
-                        phone_number = input("Enter phone number: ")
-                        try:
-                            print(admin.register_patient(title, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, phone_number))
-                            print("Patient registered successfully.")
-                        except ValueError as e:
-                            print(f"Error registering patient: {e}")
-                            continue
+def view_all_patient():
+    clear_window()
+    tk.Label(root, text="All Patients", font=("Arial", 14)).pack(pady=10)
+    patients = admin.retrieve_all_patient_records()
+    if not patients:
+        tk.Label(root, text="No patients registered.").pack(pady=10)
+    else:
+        for patient in patients.values():
+            tk.Label(root, text=f"{patient.get_patient_id()} -{patient.get_first_name()} {patient.get_last_name()}").pack()
+    tk.Button(root, text="Back", command=show_admin_menu).pack(pady=10)
 
 
-                        if admin.check_doctor_database_size() != 0:
-                            admin.assign_doctor_to_patient()
+def handle_admin_login():
+    admin_id = admin_id_entry.get()
+    password = admin_password_entry.get()
+    if admin_id and password == "<PASSWORD>":
+        messagebox.showinfo("Login Successful", "Welcome, Administrator!")
+        show_admin_menu()
+    else:
+        messagebox.showerror("Login Failed", "Invalid credentials.")
 
-                    case "2":
-                        password = input("Enter doctor's password: ")
-                        first_name = input("Enter doctor's first name: ")
-                        last_name = input("Enter doctor's last name: ")
-                        specialization = input("Enter doctor's specialization: ")
-                        phone_number = input("Enter doctor's phone number: ")
-                        try:
-                            print(admin.register_doctor(password, first_name, last_name, specialization, phone_number))
-                            print("Doctor registered successfully.")
-                        except ValueError as e:
-                            print(f"Error registering doctor: {e}")
-                            continue
-                        if admin.check_doctor_database_size() != 0:
-                            admin.assign_doctor_to_patient()
+def show_main_menu():
+    clear_window()
+    tk.Label(root, text="Welcome to \nJBL General Hospital", font=("Arial", 16), pady=10).pack()
 
-                    case "3":
-                        if admin.check_patient_database_size() != 0:
-                            patients = admin.retrieve_all_patient_records()
-                            for patient in patients.values():
-                                print(patient)
-                        if admin.check_patient_database_size() == 0:
-                            print("No patients registered yet.")
+    tk.Button(root, text="Login as Administrator", width=30, command=show_admin_login).pack(pady=5)
+    tk.Button(root, text="Login as Doctor", width=30, command=handle_doctor_login).pack(pady=5)
+    tk.Button(root, text="Exit", width=30, command=root.quit).pack(pady=5)
 
-                    case "4":
-                        if admin.check_doctor_database_size() != 0:
-                            doctors = admin.retrieve_all_doctor_records()
-                            for doctor in doctors.values():
-                                print(doctor.get_doctor_info()+"\n")
-                        if admin.check_doctor_database_size() == 0:
-                            print("No doctors registered yet.")
+def show_admin_login():
+    clear_window()
+    tk.Label(root, text="Administrator Login", font=("Arial", 14)).pack(pady=10)
+
+    global admin_id_entry, admin_password_entry
+    tk.Label(root, text="Admin ID:").pack()
+    admin_id_entry = tk.Entry(root)
+    admin_id_entry.pack()
+
+    tk.Label(root, text="Password:").pack()
+    admin_password_entry = tk.Entry(root, show="*")
+    admin_password_entry.pack()
+
+    tk.Button(root, text="Login", command=handle_admin_login).pack(pady=10)
+    tk.Button(root, text="Back to Menu", command=show_main_menu).pack()
+
+def show_admin_menu():
+    clear_window()
+    tk.Label(root, text="Admin Menu", font=("Arial", 14)).pack(pady=10)
+    tk.Button(root, text="Register New Patient", command=register_patient).pack(pady=5)
+    tk.Button(root, text="Register New Doctor", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="View All Patients", command=view_all_patient).pack(pady=5)
+    tk.Button(root, text="View All Doctor", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Update Patient Information", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Update Doctor Information", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Find Doctor by ID", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Find Patient by ID", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Print Schedule Report", command=register_doctor).pack(pady=5)
 
 
-                    case "5":
-                        id_number = input("Enter doctor's ID number to update: ")
-                        field_to_update = input("Which field do you want to update (first_name/last_name/specialization/phone_number)? ").lower()
+    tk.Button(root, text="Logout", command=show_main_menu).pack(pady=5)
 
-                        if field_to_update == "first_name":
-                            new_value = input("Enter new first name: ")
-                            try:
-                                admin.update_doctor_first_name(id_number, new_value)
-                            except ValueError as e:
-                                print(f"Error updating first name: {e}")
-                                continue
-                        elif field_to_update == "last_name":
-                            new_value = input("Enter new last name: ")
-                            try:
-                                admin.update_doctor_last_name(id_number, new_value)
-                            except ValueError as e:
-                                print(f"Error updating last name: {e}")
-                                continue
-                        elif field_to_update == "specialization":
-                            new_value = input("Enter new specialization: ")
-                            try:
-                                admin.update_doctor_specialization(id_number, new_value)
-                            except ValueError as e:
-                                print(f"Error updating specialization: {e}")
-                        elif field_to_update == "phone_number":
-                            new_value = input("Enter new phone number: ")
-                            try:
-                                admin.update_doctor_phone_number(id_number, new_value)
-                            except ValueError as e:
-                                print(f"Error updating phone number: {e}")
-                                continue
-                        print("Doctor's information updated.")
+def handle_patient_register():
+    title = title_enter.get()
+    first_name = patient_first_name_entered.get()
+    last_name = patient_last_name.get()
+    year_of_birth = int(patient_year_of_birth.get())
+    month_of_birth = int(patient_month_of_birth.get())
+    day_of_birth = int(patient_day_of_birth.get())
+    phone_number = patient_phone_number.get()
+    try:
+        admin.register_patient(title, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, phone_number)
+        messagebox.showinfo("Success", "Registration Successful.")
+        show_admin_menu()
+    except ValueError as e:
+        messagebox.showerror("Registration Unsuccessful!", "Please check your input.\n" + str(e))
 
-                    case "6":
-                        id_number = input("Enter patient's ID number to update: ")
-                        field_to_update = input("Which field do you want to update (first name/last name/phone number)? ").lower().strip(' ') .strip('_')
 
-                        if field_to_update == "firstname":
-                            new_value = input("Enter new first name: ")
-                            admin.update_patient_first_name(id_number, new_value)
-                        elif field_to_update == "lastname":
-                            new_value = input("Enter new last name: ")
-                            admin.update_patient_last_name(id_number, new_value)
-                        elif field_to_update == "phonenumber":
-                            new_value = input("Enter new phone number: ")
-                            admin.update_patient_phone_number(id_number, new_value)
-                        print("Patient's information updated.")
+def register_patient():
+    clear_window()
+    tk.Label(root, text="Register Patient", font=("Arial", 14)).pack(pady=10)
 
-                    case "7":
-                        id_number = input("Enter doctor's ID number to find: ").upper()
-                        try:
-                            doctor = admin.find_doctor_by_id(id_number)
-                            print(doctor.get_doctor_info())
-                            print("")
-                        except ValueError as e:
-                            print(f"Error finding doctor: {e}")
+    global title_enter, patient_first_name_entered, patient_last_name, patient_year_of_birth, patient_month_of_birth, patient_day_of_birth, patient_phone_number
+    tk.Label(root, text="Title:").pack()
+    title_enter = tk.Entry(root)
+    title_enter.pack()
 
-                    case "8":
-                        id_number = input("Enter patient's ID number to find: ").upper()
-                        try:
-                            patient = admin.find_patient_by_id(id_number)
-                            print(patient.__str__())
-                        except ValueError as e:
-                            print(f"Error finding patient: {e}")
+    tk.Label(root, text="First Name:").pack()
+    patient_first_name_entered = tk.Entry(root)
+    patient_first_name_entered.pack()
 
-                    case "9":
-                        print("Printing schedule report...")
-                        print(admin.print_schedule_report())
+    tk.Label(root, text="Last Name:").pack()
+    patient_last_name = tk.Entry(root)
+    patient_last_name.pack()
 
-                    case "0":
-                        print("Logging out to main menu.")
-                        inner_loop = False
+    tk.Label(root, text="Year of birth:").pack()
+    patient_year_of_birth = tk.Entry(root)
+    patient_year_of_birth.pack()
 
-                    case _:
-                        print("Invalid choice. Please try again.")
+    tk.Label(root, text="Month of birth:").pack()
+    patient_month_of_birth = tk.Entry(root)
+    patient_month_of_birth.pack()
 
-        case "2":
-            if admin.check_doctor_database_size() == 0:
-                print("No doctors registered yet.")
+    tk.Label(root, text="Day of birth:").pack()
+    patient_day_of_birth = tk.Entry(root)
+    patient_day_of_birth.pack()
 
-            else:
-                doctor_id = input("Enter doctor's ID number: ").upper()
-                password = input("Enter doctor's password: ")
+    tk.Label(root, text="Phone number:").pack()
+    patient_phone_number = tk.Entry(root)
+    patient_phone_number.pack()
 
-                if admin.authenticate_doctor(doctor_id, password):
-                    print(f"You are now logged in as a {admin.find_doctor_by_id(doctor_id).get_full_name()}")
+    tk.Button(root, text="Submit", command=handle_patient_register).pack(pady=10)
+    tk.Button(root, text="Back", command=show_admin_menu).pack()
 
-                    inner_loop = True
-                    while inner_loop:
-                        print("""
-1) View your information
-2) Check your schedule
-3) Find patient by ID
+def handle_doctor_login():
+    pass
 
-                        
-0) Logout to main menu""")
+def register_doctor():
+    clear_window()
+    tk.Label(root, text="Register Doctor", font=("Arial", 14)).pack(pady=10)
 
-                        choice = input("Enter your choice: ")
-                        match choice:
-                            case "1":
-                                doctor = admin.find_doctor_by_id(doctor_id)
-                                print(doctor.get_doctor_info())
+    global doctor_password_enter, doctor_first_name_entered, doctor_last_name_entered, doctor_specialization_entered, doctor_phone_number_entered
+    tk.Label(root, text="Enter Password:").pack()
+    doctor_password_enter = tk.Entry(root)
+    doctor_password_enter.pack()
 
-                            case "2":
-                                doctor = admin.find_doctor_by_id(doctor_id)
-                                if doctor.get_list_of_patients():
-                                    print(f"Patients assigned to {doctor.get_full_name()}:")
-                                    for patient in doctor.get_list_of_patients():
-                                        print(f"- {patient}")
-                                else:
-                                    print("No patients assigned.")
+    tk.Label(root, text="First Name:").pack()
+    doctor_first_name_entered = tk.Entry(root)
+    doctor_first_name_entered.pack()
 
-                            case "3":
-                                id_number = input("Enter patient's ID number to find: ").upper()
+    tk.Label(root, text="Last Name:").pack()
+    doctor_last_name_entered = tk.Entry(root)
+    doctor_last_name_entered.pack()
 
-                                try:
-                                    patient = admin.find_patient_by_id(id_number)
-                                    print(patient.__str__())
+    tk.Label(root, text="Specialization:").pack()
+    doctor_specialization_entered = tk.Entry(root)
+    doctor_specialization_entered.pack()
 
-                                    navigator = input("Do you want to update this patient's medical record? (yes/no): ").lower()
-                                    if navigator == "yes":
-                                        diagnosis = input("Enter diagnosis: ")
-                                        treatment = input("Enter treatment: ")
-                                        admin.find_patient_by_id(id_number).add_medical_record(f"Diagnosis: {diagnosis}, Treatment: {treatment}")
-                                    else:
-                                        print("No changes made to the patient's record.")
+    tk.Label(root, text="Phone Number:").pack()
+    doctor_phone_number_entered = tk.Entry(root)
+    doctor_phone_number_entered.pack()
 
-                                except ValueError as e:
-                                    print(f"Error finding patient: {e}")
 
-                            case "0":
-                                print("Logging out to main menu.")
-                                inner_loop = False
-
-                            case _:
-                                print("Invalid choice. Please try again.")
+    tk.Button(root, text="Submit", command=handle_doctor_registration).pack(pady=10)
+    tk.Button(root, text="Back", command=show_admin_menu).pack()
 
 
 
-        case "0":
-            print("Exiting the application.")
-            loop_condition = False
+def handle_doctor_registration():
+    try:
+        admin.register_doctor(doctor_password_enter.get(), doctor_first_name_entered.get(), doctor_last_name_entered.get(), doctor_specialization_entered.get(), doctor_phone_number_entered.get())
+        messagebox.showinfo("Success", "Registration Successful.")
+        show_admin_menu()
+    except ValueError as e:
+        messagebox.showerror("Registration Unsuccessful!", "Please check your input.\n" + str(e))
 
-        case _:
-            print("Invalid input. Try again.")
+def clear_window():
+    for widget in root.winfo_children():
+        widget.destroy()
+
+
+root = tk.Tk()
+root.title("Hospital Management System")
+root.geometry("300x450")
+
+show_main_menu()
+
+root.mainloop()
