@@ -28,7 +28,7 @@ while loop_condition:
             while inner_loop:
                 print("""
 1) Register a new patient
-2) Register a new doctor
+2) Register a new doctor 
 3) View all patients
 4) View all doctors
 5) Update doctor information
