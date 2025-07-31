@@ -72,7 +72,7 @@ def show_admin_menu():
     tk.Button(root, text="Update Doctor Information", command=register_doctor).pack(pady=5)
     tk.Button(root, text="Find Doctor by ID", command=register_doctor).pack(pady=5)
     tk.Button(root, text="Find Patient by ID", command=register_doctor).pack(pady=5)
-    tk.Button(root, text="Print Schedule Report", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Print Schedule Report", command=show_print_schedule).pack(pady=5)
 
 
     tk.Button(root, text="Logout", command=show_main_menu).pack(pady=5)
