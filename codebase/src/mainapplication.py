@@ -16,6 +16,18 @@ def view_all_patient():
     tk.Button(root, text="Back", command=show_admin_menu).pack(pady=10)
 
 
+def view_all_doctors():
+    clear_window()
+    tk.Label(root, text="All Doctors", font=("Arial", 14)).pack(pady=10)
+    doctors = admin.retrieve_all_doctor_records()
+    if not doctors:
+        tk.Label(root, text="No doctors registered.").pack(pady=10)
+    else:
+        for doctor in doctors.values():
+            tk.Label(root, text=doctor.get_doctor_info()).pack()
+    tk.Button(root, text="Back", command=show_admin_menu).pack(pady=10)
+
+
 def handle_admin_login():
     admin_id = admin_id_entry.get()
     password = admin_password_entry.get()
@@ -55,7 +67,7 @@ def show_admin_menu():
     tk.Button(root, text="Register New Patient", command=register_patient).pack(pady=5)
     tk.Button(root, text="Register New Doctor", command=register_doctor).pack(pady=5)
     tk.Button(root, text="View All Patients", command=view_all_patient).pack(pady=5)
-    tk.Button(root, text="View All Doctor", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="View All Doctors", command=view_all_doctors).pack(pady=5)
     tk.Button(root, text="Update Patient Information", command=register_doctor).pack(pady=5)
     tk.Button(root, text="Update Doctor Information", command=register_doctor).pack(pady=5)
     tk.Button(root, text="Find Doctor by ID", command=register_doctor).pack(pady=5)
@@ -76,6 +88,7 @@ def handle_patient_register():
     try:
         admin.register_patient(title, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, phone_number)
         messagebox.showinfo("Success", "Registration Successful.")
+        admin.assign_doctor_to_patient()
         show_admin_menu()
     except ValueError as e:
         messagebox.showerror("Registration Unsuccessful!", "Please check your input.\n" + str(e))
