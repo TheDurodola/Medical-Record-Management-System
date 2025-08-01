@@ -179,7 +179,7 @@ def clear_window():
 
 root = tk.Tk()
 root.title("Hospital Management System")
-root.geometry("300x450")
+root.geometry("500x500")
 
 show_main_menu()
 
