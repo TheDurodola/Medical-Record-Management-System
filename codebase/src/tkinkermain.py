@@ -12,7 +12,7 @@ def show_main_menu():
 
     tk.Button(root, text="Login as Administrator", width=30,command=show_admin_login).pack(pady=5)
     tk.Button(root, text="Login as Doctor", width=30, command=show_doctor_login).pack(pady=5)
-    tk.Button(root, text="Login as Patient", width=30, command=show_patient_login).pack(pady=5)
+    # tk.Button(root, text="Login as Patient", width=30, command=show_patient_login).pack(pady=5)
     tk.Button(root, text="Exit", width=30, command=root.quit).pack(pady=5)
 
 
@@ -42,7 +42,6 @@ def view_all_patient():
         for patient in patients.values():
             tk.Label(root, text=f"{patient.get_patient_id()} -{patient.get_first_name()} {patient.get_last_name()}").pack()
     tk.Button(root, text="Back", command=show_admin_menu).pack(pady=10)
-
 
 def view_all_doctors():
     clear_window()
@@ -76,10 +75,10 @@ def show_admin_menu():
     tk.Button(root, text="Register New Doctor", command=register_doctor).pack(pady=5)
     tk.Button(root, text="View All Patients", command=view_all_patient).pack(pady=5)
     tk.Button(root, text="View All Doctors", command=view_all_doctors).pack(pady=5)
-    tk.Button(root, text="Update Patient Information", command=register_doctor).pack(pady=5)
-    tk.Button(root, text="Update Doctor Information", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Update Patient Information", command=update_doctor_profile).pack(pady=5)
+    tk.Button(root, text="Update Doctor Information", command=update_doctor_profile).pack(pady=5)
     tk.Button(root, text="Find Doctor by ID", command=show_find_doctor_by_id).pack(pady=5)
-    tk.Button(root, text="Find Patient by ID", command=register_doctor).pack(pady=5)
+    tk.Button(root, text="Find Patient by ID", command=show_find_patient_by_id).pack(pady=5)
     # tk.Button(root, text="Print Schedule Report", command=show_print_schedule).pack(pady=5)
 
     tk.Button(root, text="Logout", command=show_main_menu).pack(pady=5)
@@ -171,7 +170,7 @@ def show_doctor_login():
 
 def show_find_doctor_by_id():
     clear_window()
-    tk.Label(root, text="Doctor Login", font=("Arial", 14)).pack(pady=10)
+    tk.Label(root, text="Find Doctor", font=("Arial", 14)).pack(pady=10)
 
 
     global doctor_id_entry
@@ -180,6 +179,21 @@ def show_find_doctor_by_id():
     doctor_id_entry.pack()
 
     tk.Button(root, text="Submit", command=handle_find_doctor_by_id).pack(pady=10)
+    tk.Button(root, text="Back to Menu", command=show_admin_menu).pack()
+
+
+def show_find_patient_by_id():
+    clear_window()
+    tk.Label(root, text="Find Patient", font=("Arial", 14)).pack(pady=10)
+
+
+    global patient_id_entry
+    tk.Label(root, text="Patient ID:").pack()
+    patient_id_entry = tk.Entry(root)
+    patient_id_entry.pack()
+
+    tk.Button(root, text="Submit", command=handle_find_doctor_by_id).pack(pady=10)
+    tk.Button(root, text="Back to Menu", command=show_admin_menu).pack()
 
 
 def handle_find_doctor_by_id():
@@ -227,15 +241,15 @@ def register_doctor():
     doctor_phone_number_entered.pack()
 
 
-    tk.Button(root, text="Submit",command=choose_specialization).pack(pady=10)
+    tk.Button(root, text="Next",command=choose_specialization).pack(pady=10)
     tk.Button(root, text="Back", command=show_admin_menu).pack()
 
 
 
-def handle_doctor_registration(specialization):
+def handle_doctor_registration(specialization: str):
     try:
-        admin.register_doctor(doctor_password_enter.get(), doctor_first_name_entered.get(), doctor_last_name_entered.get(), doctor_dob_entered, doctor_phone_number_entered.get(), specialization)
-        messagebox.showinfo("Success", "Registration Successful.")
+        doctor = admin.register_doctor(doctor_password_enter.get(), doctor_first_name_entered.get(), doctor_last_name_entered.get(), doctor_dob_entered.get(), doctor_phone_number_entered.get(), specialization)
+        messagebox.showinfo("Success", "Registration Successful. " + doctor_first_name_entered.get() + "'s new doctor ID is " + doctor.get_doctor_id()+ ".")
         show_admin_menu()
     except ValueError as e:
         messagebox.showerror("Registration Unsuccessful!", "Please check your input.\n" + str(e))
@@ -262,6 +276,74 @@ def choose_specialization():
     tk.Button(root, text="Urologist",  command=lambda:handle_doctor_registration("Urologist")).pack(pady=5)
     tk.Button(root, text="Emergency Medicine Doctor",  command=lambda:handle_doctor_registration("Emergency Medicine Doctor")).pack(pady=5)
     tk.Button(root, text="Public Health Physician",  command=lambda:handle_doctor_registration("Public Health Physician")).pack(pady=5)
+    tk.Button(root, text="Back", command=register_doctor).pack(pady=5)
+
+
+def update_first_name(id):
+    clear_window()
+    tk.Label(root, text="Update First Name", font=("Arial", 14)).pack(pady=10)
+
+    tk.Label(root, text="Enter New First Name:").pack()
+    new_first_name_entered = tk.Entry(root)
+    new_first_name_entered.pack()
+
+    tk.Button(root, text="Update", command=lambda: admin.update_doctor_first_name(id, new_first_name_entered.get())).pack(pady=5)
+    tk.Button(root, text="Back", command=update_doctor_profile).pack(pady=5)
+
+
+
+def update_last_name(id):
+    clear_window()
+    tk.Label(root, text="Update Last Name", font=("Arial", 14)).pack(pady=10)
+
+    tk.Label(root, text="Enter New Last Name:").pack()
+    new_last_name_entered = tk.Entry(root)
+    new_last_name_entered.pack()
+
+    tk.Button(root, text="Update", command=lambda: admin.update_doctor_last_name(id, new_last_name_entered.get())).pack(
+        pady=5)
+    tk.Button(root, text="Back", command=update_doctor_profile).pack(pady=5)
+
+
+def update_phone_name(id):
+    clear_window()
+    tk.Label(root, text="Update Phone Name", font=("Arial", 14)).pack(pady=10)
+
+    tk.Label(root, text="Enter New Phone Name:").pack()
+    new_phone_entered = tk.Entry(root)
+    new_phone_entered.pack()
+
+    tk.Button(root, text="Update", command=lambda: admin.update_doctor_last_name(id, new_phone_entered)).pack(
+        pady=5)
+    tk.Button(root, text="Back", command=update_doctor_profile).pack(pady=5)
+
+
+def update_dob_name(id):
+    clear_window()
+    tk.Label(root, text="Update DOB Name", font=("Arial", 14)).pack(pady=10)
+
+    tk.Label(root, text="Enter New DOB Name:").pack()
+    new_dob_entered = tk.Entry(root)
+    new_dob_entered.pack()
+
+    tk.Button(root, text="Update", command=lambda: admin.update_doctor_dob(id, new_dob_entered)).pack(
+        pady=5)
+    tk.Button(root, text="Back", command=update_doctor_profile).pack(pady=5)
+
+
+def update_doctor_profile():
+    clear_window()
+    tk.Label(root, text="Update Doctor Information", font=("Arial", 14)).pack(pady=10)
+
+    tk.Label(root, text="Enter Doctor ID:").pack()
+    doctor_id_entered = tk.Entry(root)
+    doctor_id_entered.pack()
+
+    tk.Button(root, text="Update First Name", command=lambda: update_first_name(doctor_id_entered)).pack(pady=5)
+    tk.Button(root, text="Update Last Name", command=lambda: update_last_name(doctor_id_entered)).pack(pady=5)
+    tk.Button(root, text="Update DOB", command=lambda : update_dob_name(doctor_id_entered)).pack(pady=5)
+    tk.Button(root, text="Update Phone Number", command=lambda: update_phone_name(doctor_id_entered)).pack(pady=5)
+    tk.Button(root, text="Back", command= show_admin_menu).pack(pady=5)
 
 
 def clear_window():
